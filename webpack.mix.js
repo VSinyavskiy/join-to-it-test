@@ -52,7 +52,8 @@ mix.combine([
     .copy('vendor/almasaeed2010/adminlte/dist/img','public/assets/img')
     .copy('vendor/almasaeed2010/adminlte/plugins','public/assets/plugins')
     .copy('vendor/datatables/i18n/i18n', 'public/assets/datatables/i18n')
-    .copy('vendor/almasaeed2010/adminlte/plugins/iCheck/square/blue@2x.png', 'public/assets/css');
+    .copy('vendor/almasaeed2010/adminlte/plugins/iCheck/square/blue@2x.png', 'public/assets/css')
+    .copy('resources/assets/images/default_avatar.png', 'storage/app/public/media/default_avatar.png');
 
 if (mix.config.inProduction) {
   mix.version();

@@ -21,16 +21,8 @@
         <span class="help-block">{{ $errors->first('password') }}</span>
       </div>
 
-      <div class="row">
-        <div class="form-inline col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              {{ Form::checkbox('is_remember', true) }} {{ __('admin_layout.login.fields.is_remember') }}?
-            </label>
-          </div>
-        </div>
-      
-        <div class="col-xs-4">
+      <div class="row">    
+        <div class="col-xs-4 pull-right">
           <button type="submit" class="btn btn-primary btn-block btn-flat">{{ __('admin_layout.login.signin_label') }}</button>
         </div>
       </div>

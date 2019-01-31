@@ -91,7 +91,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'ru',
+    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -161,7 +161,6 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Yajra\Datatables\DatatablesServiceProvider::class,
-        Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
 
     ],
 
@@ -214,7 +213,6 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
 
     ],
 

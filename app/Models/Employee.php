@@ -6,19 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
+	const DEFAULT_AVATAR_PATH  = 'storage/default_avatar.png';
+
     protected $fillable = [
-        'company_id', 'first_name', 'last_name', 'email', 'phone',
+        'first_name', 'last_name', 'email', 'phone', 'image',
     ];
 
-    public function scopeJoinCompanies($query)
+    public function getImageAttribute($value)
     {
-        $query->join('companies', function($join) {
-            $join->on('employees.company_id', '=', 'companies.id');
-        });
+    	return $value ?? self::DEFAULT_AVATAR_PATH;
     }
 
-    public function company()
+    public function getImageFullUrlAttribute()
     {
-        return $this->belongsTo(Company::class, 'company_id');
+    	return env('APP_URL') . $this->image;
     }
 }

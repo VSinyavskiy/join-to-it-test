@@ -30,8 +30,10 @@
                             <td>{{ $employee->id }}</td>
                         </tr>
                         <tr>
-                            <th>@lang('admin.employees.fields.company_id'):</th>
-                            <td>{{ $employee->company->name }}</td>
+                            <th>@lang('admin.employees.fields.image'):</th>
+                            <td>
+                                <img src="{{ $employee->image_full_url }}">
+                            </td>
                         </tr>
                         <tr>
                             <th>@lang('admin.employees.fields.first_name'):</th>

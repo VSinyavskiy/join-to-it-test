@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\Company;
 use App\Models\Employee;
 use App\Http\Requests\Employees\StoreEmployeeRequest;
 use App\Http\Requests\Employees\UpdateEmployeeRequest;
 
 use Datatables;
+use Html;
 
 class EmployeesController extends Controller
 {
@@ -22,7 +22,6 @@ class EmployeesController extends Controller
     public function index()
     {
         $pageTitle           = __('admin.employees.title');
-        $companiesSearchJson = json_encode(Company::getCompaniesList());
 
         return view('admin.employees.index', compact('pageTitle', 'companiesSearchJson'));
     }
@@ -34,19 +33,13 @@ class EmployeesController extends Controller
      */
     public function data()
     {
-        $employees = Employee::joinCompanies()->select([
-            'employees.id',
-            'employees.company_id',
-            'companies.name',
-            'employees.first_name',
-            'employees.last_name',
-            'employees.email',
-            'employees.phone',
-            'employees.created_at',
-        ]);
+        $employees = Employee::select(['*']);
 
         // fields
         $datatables = Datatables::of($employees)
+            ->editColumn('image', function(Employee $employee) {
+                return Html::image($employee->image, 'Image', ['width' => '150px']);
+            })
             ->addColumn('actions', function(Employee $employee) {
                 return view('admin.employees._actions', compact('employee'))->render();
             });
@@ -115,8 +108,7 @@ class EmployeesController extends Controller
      */
     public function update(UpdateEmployeeRequest $request, Employee $employee)
     {
-        $employee->fill($request->all())
-                ->save();
+        $employee->update($request->all());
 
         return redirect()->route('admin.employees.show', $employee);
     }

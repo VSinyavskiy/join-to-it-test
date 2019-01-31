@@ -9,32 +9,12 @@
     </a>
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
-
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="hidden-xs"><i class="fa fa-language" aria-hidden="true"></i>&nbsp;&nbsp;{{ __('admin.language') }}</span>
-            </a>
-            <ul class="dropdown-menu">
-
-              @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                  <li>
-                      <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
-                          {{ $properties['native'] }}
-                      </a>
-                  </li>
-              @endforeach
-
-            </ul>
-        </li>
-
           <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="{{ Auth::guard()->user()->avatar->getFullUrl() }}" class="user-image" alt="User Image">
             <span class="hidden-xs">{{ Auth::guard()->user()->name }}</span>
           </a>
           <ul class="dropdown-menu">
-            <li class="user-header">
-              <img src="{{ Auth::guard()->user()->avatar->getFullUrl() }}" class="img-circle" alt="{{ Auth::guard()->user()->name }}">
+            <li class="user-header" style="height: auto;">
               <p>
                 {{ Auth::guard()->user()->name }}
                 <small>{{ Auth::guard()->user()->email }}</small>

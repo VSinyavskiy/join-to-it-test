@@ -28,7 +28,7 @@
             <thead>
               <tr>
                 <th width="5%">{{ __('admin.employees.fields.id') }}</th>
-                <th>{{ __('admin.companies.fields.name') }}</th>
+                <th>{{ __('admin.employees.fields.image') }}</th>
                 <th>{{ __('admin.employees.fields.first_name') }}</th>
                 <th>{{ __('admin.employees.fields.last_name') }}</th>
                 <th>{{ __('admin.employees.fields.email') }}</th>
@@ -41,8 +41,8 @@
             </tbody>
             <tfoot>
               <tr>
-                <th class="searchable">{{ __('admin.employees.fields.id') }}</th>
-                <th class="searchable" data-select='{!! $companiesSearchJson !!}''>{{ __('admin.companies.fields.name') }}</th>              
+                <th class="searchable">{{ __('admin.employees.fields.id') }}</th>              
+                <th>{{ __('admin.employees.fields.image') }}</th>              
                 <th class="searchable">{{ __('admin.employees.fields.first_name') }}</th>              
                 <th class="searchable">{{ __('admin.employees.fields.last_name') }}</th>              
                 <th class="searchable">{{ __('admin.employees.fields.email') }}</th>              
@@ -65,7 +65,7 @@
     $(function() {
       namespace('datatable-helper').initTable('#crud-table', '{!! route('admin.employees.data') !!}', [
           { data: 'id', name: 'id' },
-          { data: 'name', name: 'company.name', searchable: false, orderable: false },
+          { data: 'image', name: 'image', searchable: false, orderable: false },
           { data: 'first_name', name: 'first_name' },
           { data: 'last_name', name: 'last_name' },
           { data: 'email', name: 'email' },

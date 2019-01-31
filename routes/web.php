@@ -11,41 +11,31 @@
 |
 */
 
+
 Route::group([
-    'middleware' => ['localization'],
-    'prefix'     => LaravelLocalization::setLocale(),
-], function() {	
+    'namespace' => 'Auth',
+], function () {
 
-    Route::group([
-        'namespace' => 'Auth',
-    ], function () {
-
-        // Auth
-        Route::get('/',                   'LoginController@login')->name('login');
-        Route::post('/',                  'LoginController@loginPost')->name('login.post');
-        Route::get('logout',              'LoginController@logout')->name('logout');
-        
-    });
-
-    // Admin routes
-    Route::group([
-        'namespace'  => 'Admin',
-        'middleware' => ['auth'],
-        'prefix'     => 'admin',
-        'as'         => 'admin.'
-    ], function () {
-        // Dashboard
-        Route::get('/',              'DashboardController@index')->name('dashboard');
-
-        // Companies
-        Route::get('companies/data', 'CompaniesController@data')->name('companies.data');
-        Route::resource('companies', 'CompaniesController');
-
-        // Employees
-        Route::get('employees/data', 'EmployeesController@data')->name('employees.data');
-        Route::resource('employees', 'EmployeesController');
-
-    });
+    // Auth
+    Route::get('/',                   'LoginController@login')->name('login');
+    Route::post('/',                  'LoginController@loginPost')->name('login.post');
+    Route::get('logout',              'LoginController@logout')->name('logout');
     
+});
+
+// Admin routes
+Route::group([
+    'namespace'  => 'Admin',
+    'middleware' => ['auth'],
+    'prefix'     => 'admin',
+    'as'         => 'admin.'
+], function () {
+    // Dashboard
+    Route::get('/',              'DashboardController@index')->name('dashboard');
+
+    // Employees
+    Route::get('employees/data', 'EmployeesController@data')->name('employees.data');
+    Route::resource('employees', 'EmployeesController');
+
 });
 
